@@ -44,6 +44,22 @@
 
 @media (max-width: 991px) {
   .container {
-    max-width: vw(460);
+    max-width: vw(460, $mobile-width);
+  }
+
+  .swiper-pagination-bullet {
+    margin: 0 vw(2.5, $mobile-width);
+    width: vw(7, $mobile-width);
+    height: vw(7, $mobile-width);
+    border-radius: vw(8, $mobile-width);
+  
+    &:before {
+      width: vw(12, $mobile-width);
+      height: vw(12, $mobile-width);
+    }
+  
+    &-active {
+      width: vw(20, $mobile-width);
+    }
   }
 }

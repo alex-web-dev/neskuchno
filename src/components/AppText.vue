@@ -103,5 +103,48 @@ const slots = useSlots()
       }
     }
   }
+
+  @media (max-width: 991px) {
+    font-size: vw(16, $mobile-width);
+
+    p {
+      &:not(:first-child) {
+        margin-top: vw(16, $mobile-width);
+      }
+    }
+
+    &--sm {
+      font-size: vw(14, $mobile-width);
+    }
+
+    &--lg {
+      font-size: vw(18, $mobile-width);
+    }
+
+    &--xl {
+      font-size: vw(20, $mobile-width);
+    }
+
+    &__icon {
+      &:first-child:not(:last-child) {
+        margin-right: vw(5, $mobile-width);
+      }
+
+      &:last-child:not(:first-child) {
+        margin-left: vw(5, $mobile-width);
+      }
+
+
+      &--mx-sm {
+        &:first-child:not(:last-child) {
+          margin-right: vw(4, $mobile-width);
+        }
+
+        &:last-child:not(:first-child) {
+          margin-left: vw(4, $mobile-width);
+        }
+      }
+    }
+  }
 }
 </style>

@@ -14,5 +14,9 @@
 .main {
   padding-bottom: vw(62);
   flex: 1 1 auto;
+
+  @media (max-width: 991px) {
+    padding-bottom: vw(62, $mobile-width);
+  }
 }
 </style>

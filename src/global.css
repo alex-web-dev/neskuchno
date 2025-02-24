@@ -1,45 +1,9 @@
 :root {
-  --color-primary-50: #fdfbfe;
-  --color-primary-100: #f6f1fc;
-  --color-primary-200: #ebdef8;
-  --color-primary-300: #dcc5f3;
   --color-primary-400: #c8a5ec;
-  --color-primary-500: #b07de3;
-  --color-primary-600: #944ed9;
   --color-primary-700: #7328bd;
-  --color-primary-800: #41176c;
-  --color-primary-900: #230c3a;
-  --color-primary-950: #1a092a;
-  --color-secondary-50: #fefbfe;
-  --color-secondary-100: #fbf1fc;
-  --color-secondary-200: #f6def8;
-  --color-secondary-300: #eec5f3;
-  --color-secondary-400: #e5a5ec;
-  --color-secondary-500: #d97de3;
-  --color-secondary-600: #cb4ed9;
-  --color-secondary-700: #ae28bd;
-  --color-secondary-800: #63176c;
-  --color-secondary-900: #360c3a;
-  --color-secondary-950: #27092a;
-  --color-gray-50: #fdfdfd;
-  --color-gray-100: #f6f6f6;
-  --color-gray-200: #ebebeb;
-  --color-gray-300: #dcdcdc;
-  --color-gray-400: #c8c8c8;
-  --color-gray-500: #b0b0b0;
-  --color-gray-600: #949494;
-  --color-gray-700: #737373;
   --color-gray-800: #414141;
-  --color-gray-900: #232323;
-  --color-gray-950: #1a1a1a;
   --color-white: #ffffff;
   --color-black: #000000;
-
-  --base-width: 500;
-
-  @media (min-width: 992px) {
-    --base-width: 1500;
-  }
 }
 
 @font-face {

@@ -9,7 +9,8 @@ defineProps({
 
 <template>
   <button class="btn-next">
-    <img class="btn-next__icon" :style="{ transform: `rotate(${rotate}deg)` }" src="/img/icons/next-gray-850.svg" alt="">
+    <img class="btn-next__icon" :style="{ transform: `rotate(${rotate}deg)` }" src="/img/icons/next-gray-850.svg"
+      alt="">
   </button>
 </template>
 
@@ -37,6 +38,16 @@ defineProps({
   &.swiper-button-disabled {
     opacity: 0.5;
     cursor: default;
+  }
+
+  @media (max-width: 991px) {
+    width: vw(30, $mobile-width);
+    height: vw(30, $mobile-width);
+
+    &__icon {
+      width: vw(9, $mobile-width);
+      height: vw(16, $mobile-width);
+    }
   }
 }
 </style>

@@ -1,3 +1,6 @@
-@function vw($unitm) {
-  @return calc(($unitm * 100 / var(--base-width)) * 1vw);
+$desktop-width: 1500;
+$mobile-width: 500;
+
+@function vw($unitm, $width: $desktop-width) {
+  @return calc(($unitm * 100 / $width) * 1vw);
 }

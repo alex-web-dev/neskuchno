@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   as: {
@@ -39,6 +39,14 @@ const tag = computed(() => props.as);
 
   &--overpass {
     font-family: 'Overpass', sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    font-size: vw(24, $mobile-width);
+
+    &--2 {
+      font-size: vw(20, $mobile-width);
+    }
   }
 }
 </style>

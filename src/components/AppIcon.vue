@@ -31,5 +31,10 @@ import { useImage } from '@/hooks/useImage';
     height: 100%;
     object-fit: contain;
   }
+
+  @media (max-width: 991px) {
+    width: vw(20, $mobile-width);
+    height: vw(20, $mobile-width);
+  }
 }
 </style>

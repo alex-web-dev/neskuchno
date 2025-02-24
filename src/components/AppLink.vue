@@ -47,5 +47,9 @@ const attrs = computed(() => {
   &:hover {
     color: var(--color-primary-700);
   }
+
+  @media (max-width: 991px) {
+    font-size: vw(16, $mobile-width);
+  }
 }
 </style>

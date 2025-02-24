@@ -95,12 +95,22 @@ import AppBtnNext from './AppBtnNext.vue';
   }
 
   @media (max-width: 991px) {
+    border-radius: vw(10, $mobile-width);
+
     &__slide {
-      height: vw(460);
+      height: vw(460, $mobile-width);
     }
 
     ::v-deep(.swiper-pagination) {
-      bottom: vw(28);
+      bottom: vw(28, $mobile-width);
+    }
+
+    &__btn-next {
+      right: vw(12, $mobile-width);
+    }
+
+    &__btn-prev {
+      left: vw(12, $mobile-width);
     }
   }
 }

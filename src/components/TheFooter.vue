@@ -55,5 +55,24 @@ import AppText from './AppText.vue';
     margin-top: vw(63);
     color: #808080;
   }
+
+  @media (max-width: 991px) {
+    padding: vw(10, $mobile-width) 0;
+    border-top: vw(1, $mobile-width) solid #e5e5e5;
+
+    &__menu {
+      padding-top: vw(7, $mobile-width);
+    }
+
+    &__menu-item {
+      &:not(:first-child) {
+        margin-top: vw(5, $mobile-width);
+      }
+    }
+
+    &__privacy {
+      margin-top: vw(63, $mobile-width);
+    }
+  }
 }
 </style>

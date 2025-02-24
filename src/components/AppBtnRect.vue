@@ -35,5 +35,12 @@ const tag = computed(() => props.as);
   border-radius: vw(6);
   background-color: var(--color-white);
   border: vw(1) solid #e5e5e5;
+
+  @media (max-width: 991px) {
+    width: vw(40, $mobile-width);
+    height: vw(40, $mobile-width);
+    border-radius: vw(6, $mobile-width);
+    border-width: vw(1, $mobile-width);
+  }
 }
 </style>

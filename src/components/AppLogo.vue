@@ -18,5 +18,9 @@
     width: 100%;
     display: block;
   }
+
+  @media (max-width: 991px) {
+    width: vw(220, $mobile-width)
+  }
 }
 </style>

@@ -175,11 +175,69 @@ import EventSlider from './EventSlider.vue';
 
   @media (max-width: 991px) {
     &__content {
-      width: vw(460);
+      width: vw(460, $mobile-width);
+    }
+
+    &__slider {
+      margin-bottom: vw(15, $mobile-width);
+    }
+
+    &__header {
+      margin-bottom: vw(15, $mobile-width);
+    }
+
+    &__header-btns {
+      padding-left: vw(20, $mobile-width);
+    }
+
+    &__header-btn {
+      &:not(:first-child) {
+        margin-left: vw(20, $mobile-width);
+      }
+    }
+
+    &__meta {
+      margin-top: vw(-10, $mobile-width);
+      margin-left: vw(-35, $mobile-width);
+    }
+
+    &__meta-item {
+      margin-top: vw(10, $mobile-width);
+      margin-left: vw(35, $mobile-width);
+    }
+
+    &__title {
+      margin-bottom: vw(15, $mobile-width);
     }
 
     &__location {
-      padding: vw(2) 0;
+      margin-bottom: vw(15, $mobile-width);
+      padding: vw(2, $mobile-width) 0;
+    }
+
+    &__details {
+      margin-top: vw(-10, $mobile-width);
+      margin-left: vw(-40, $mobile-width);
+      margin-bottom: vw(15, $mobile-width);
+    }
+
+    &__detail {
+      margin-top: vw(10, $mobile-width);
+      margin-left: vw(40, $mobile-width);
+    }
+
+    &__btns {
+      margin-top: vw(-20, $mobile-width);
+      margin-left: vw(-20, $mobile-width);
+    }
+
+    &__btn {
+      margin-top: vw(20, $mobile-width);
+      margin-left: vw(20, $mobile-width);
+    }
+
+    &__article {
+      margin-top: vw(32, $mobile-width);
     }
   }
 }

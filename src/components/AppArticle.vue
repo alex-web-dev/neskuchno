@@ -46,13 +46,31 @@
   }
 
   @media (max-width: 991px) {
+    font-size: vw(16, $mobile-width);
+
+
     ::v-deep(.article__content) {
+
+      ul,
+      ol {
+        padding-bottom: vw(8, $mobile-width);
+
+        li {
+          &:not(:first-child) {
+            margin-top: vw(8, $mobile-width);
+          }
+        }
+      }
+
+      ul {
+        padding-left: vw(28, $mobile-width);
+      }
 
       p,
       ul,
       ol {
         &:not(:first-child) {
-          margin-top: vw(10);
+          margin-top: vw(10, $mobile-width);
         }
       }
     }

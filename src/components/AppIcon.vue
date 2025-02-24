@@ -5,11 +5,13 @@ defineProps({
     default: null
   }
 });
+
+import { useImage } from '@/hooks/useImage';
 </script>
 
 <template>
   <div class="icon">
-    <img v-if="src" class="icon__img" :src="src" alt="">
+    <img v-if="src" class="icon__img" :src="useImage(src)" alt="">
     <slot></slot>
   </div>
 </template>

@@ -1,0 +1,49 @@
+@use './functions.scss' as *;
+
+.app {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: vw(1160);
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet {
+  position: relative;
+  margin: 0 vw(2.5);
+  width: vw(7);
+  height: vw(7);
+  border-radius: vw(8);
+  background-color: #d2ddf2;
+  transition: width 0.3s;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: vw(12);
+    height: vw(12);
+  }
+
+  &-active {
+    width: vw(20);
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: vw(460);
+  }
+}

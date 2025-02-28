@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 
 </script>
 
@@ -9,7 +9,6 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .logo {
   width: vw(220);
@@ -20,7 +19,7 @@
   }
 
   @media (max-width: 991px) {
-    width: vw(220, $mobile-width)
+    width: vw(220, $mobile)
   }
 }
 </style>

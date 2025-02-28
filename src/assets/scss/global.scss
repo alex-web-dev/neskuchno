@@ -1,5 +1,4 @@
 @use './functions.scss' as *;
-
 .app {
   flex: 1 1 auto;
   display: flex;
@@ -44,22 +43,22 @@
 
 @media (max-width: 991px) {
   .container {
-    max-width: vw(460, $mobile-width);
+    max-width: vw(460, $mobile);
   }
 
   .swiper-pagination-bullet {
-    margin: 0 vw(2.5, $mobile-width);
-    width: vw(7, $mobile-width);
-    height: vw(7, $mobile-width);
-    border-radius: vw(8, $mobile-width);
+    margin: 0 vw(2.5, $mobile);
+    width: vw(7, $mobile);
+    height: vw(7, $mobile);
+    border-radius: vw(8, $mobile);
   
     &:before {
-      width: vw(12, $mobile-width);
-      height: vw(12, $mobile-width);
+      width: vw(12, $mobile);
+      height: vw(12, $mobile);
     }
   
     &-active {
-      width: vw(20, $mobile-width);
+      width: vw(20, $mobile);
     }
   }
 }

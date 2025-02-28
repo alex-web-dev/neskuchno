@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 
 </script>
 
@@ -9,14 +9,13 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .main {
   padding-bottom: vw(62);
   flex: 1 1 auto;
 
   @media (max-width: 991px) {
-    padding-bottom: vw(62, $mobile-width);
+    padding-bottom: vw(62, $mobile);
   }
 }
 </style>

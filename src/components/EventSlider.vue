@@ -34,14 +34,12 @@
     <AppBtnNext class="event-slider__btn-next" />
   </div>
 </template>
-<script setup>
+<script lang="ts" setup>
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import AppBtnNext from './AppBtnNext.vue';
+import AppBtnNext from '@/components/AppBtnNext.vue';
 </script>
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .event-slider {
   position: relative;
@@ -95,22 +93,22 @@ import AppBtnNext from './AppBtnNext.vue';
   }
 
   @media (max-width: 991px) {
-    border-radius: vw(10, $mobile-width);
+    border-radius: vw(10, $mobile);
 
     &__slide {
-      height: vw(460, $mobile-width);
+      height: vw(460, $mobile);
     }
 
     ::v-deep(.swiper-pagination) {
-      bottom: vw(28, $mobile-width);
+      bottom: vw(28, $mobile);
     }
 
     &__btn-next {
-      right: vw(12, $mobile-width);
+      right: vw(12, $mobile);
     }
 
     &__btn-prev {
-      left: vw(12, $mobile-width);
+      left: vw(12, $mobile);
     }
   }
 }

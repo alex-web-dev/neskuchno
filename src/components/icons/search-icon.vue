@@ -1,0 +1,21 @@
+<template>
+    <svg class="icon-class" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M16.5 16.5L14 14M15.6667 8.58333C15.6667 12.4954 12.4954 15.6667 8.58333 15.6667C4.67132 15.6667 1.5 12.4954 1.5 8.58333C1.5 4.67132 4.67132 1.5 8.58333 1.5C12.4954 1.5 15.6667 4.67132 15.6667 8.58333Z"
+            :stroke="color || 'black'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+    color?: string;
+}>();
+</script>
+
+<style lang="scss" scoped>
+
+.icon-class {
+    width: vw(20);
+    height: vw(20);
+}
+</style>

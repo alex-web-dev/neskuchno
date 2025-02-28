@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
 
@@ -37,7 +37,6 @@ const attrs = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .link {
   font-size: vw(16);
@@ -49,7 +48,7 @@ const attrs = computed(() => {
   }
 
   @media (max-width: 991px) {
-    font-size: vw(16, $mobile-width);
+    font-size: vw(16, $mobile);
   }
 }
 </style>

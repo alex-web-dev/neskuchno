@@ -1,0 +1,23 @@
+<template>
+    <svg class="icon-class" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M16.6668 9.16667C16.6668 13.3002 12.7845 16.4632 10.9452 17.7298C10.6623 17.9246 10.5208 18.022 10.2988 18.0766C10.1323 18.1176 9.86799 18.1176 9.70156 18.0766C9.47954 18.022 9.33807 17.9246 9.05513 17.7298C7.21583 16.4632 3.3335 13.3002 3.3335 9.16667C3.3335 5.48477 6.31826 2.5 10.0002 2.5C13.6821 2.5 16.6668 5.48477 16.6668 9.16667Z"
+            stroke="#414141" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+            d="M12.1655 9.16672C12.1655 10.3626 11.1961 11.3321 10.0002 11.3321C8.80426 11.3321 7.83479 10.3626 7.83479 9.16672C7.83479 7.97081 8.80426 7.00134 10.0002 7.00134C11.1961 7.00134 12.1655 7.97081 12.1655 9.16672Z"
+            :stroke="color || 'black'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</template>
+
+<script setup lang="ts">
+defineProps<{
+    color?: string;
+}>();
+</script>
+
+<style lang="scss" scoped>
+.icon-class {
+    width: vw(20);
+    height: vw(20);
+}
+</style>

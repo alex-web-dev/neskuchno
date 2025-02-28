@@ -1,7 +1,7 @@
-<script setup>
-import AppBtn from './AppBtn.vue';
-import AppLogo from './AppLogo.vue';
-import AppText from './AppText.vue';
+<script lang="ts" setup>
+import AppBtn from '@/components/AppBtn.vue';
+import AppLogo from '@/components/AppLogo.vue';
+import AppText from '@/components/AppText.vue';
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import AppText from './AppText.vue';
     <div class="container">
       <div class="header__content">
         <AppLogo class="header__logo" />
-        <AppText class="text--xl text--extrabold text--montserrat text--upper header__text">Абсолютно все события вашего
+        <AppText class="text--lg text--extrabold text--montserrat text--upper header__text">Абсолютно все события вашего
           города</AppText>
         <div class="header__btns">
           <AppBtn class="btn--rounded-3xl header__btns-item">Войти</AppBtn>
@@ -20,10 +20,9 @@ import AppText from './AppText.vue';
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .header {
-  padding: vw(30) 0;
+  padding: vw(20) 0;
 
   &__content {
     display: flex;
@@ -53,30 +52,30 @@ import AppText from './AppText.vue';
   }
 
   @media (max-width: 991px) {
-    padding: vw(20, $mobile-width) 0;
+    padding: vw(20, $mobile) 0;
 
     &__content {
       flex-wrap: wrap;
     }
 
     &__text {
-      margin-top: vw(20, $mobile-width);
+      margin-top: vw(20, $mobile);
       margin-left: 0;
       order: 2;
       width: 100%;
     }
 
     &__logo {
-      max-width: vw(220, $mobile-width);
+      max-width: vw(220, $mobile);
     }
 
     &__btns {
-      padding-left: vw(20, $mobile-width);
+      padding-left: vw(20, $mobile);
     }
 
     &__btns-item {
       &:not(:first-child) {
-        margin-left: vw(20, $mobile-width);
+        margin-left: vw(20, $mobile);
       }
     }
   }

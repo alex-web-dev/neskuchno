@@ -1,11 +1,11 @@
-<script setup>
-import AppIcon from './AppIcon.vue';
-import AppText from './AppText.vue';
-import AppBtnRect from './AppBtnRect.vue';
-import AppTitle from './AppTitle.vue';
-import AppBtn from './AppBtn.vue';
-import AppArticle from './AppArticle.vue';
-import EventSlider from './EventSlider.vue';
+<script lang="ts" setup>
+import AppIcon from '@/components/AppIcon.vue';
+import AppText from '@/components/AppText.vue';
+import AppBtnRect from '@/components/AppBtnRect.vue';
+import AppTitle from '@/components/AppTitle.vue';
+import AppBtn from '@/components/AppBtn.vue';
+import AppArticle from '@/components/AppArticle.vue';
+import EventSlider from '@/components/EventSlider.vue';
 </script>
 
 <template>
@@ -92,7 +92,6 @@ import EventSlider from './EventSlider.vue';
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .event {
   &__content {
@@ -175,69 +174,69 @@ import EventSlider from './EventSlider.vue';
 
   @media (max-width: 991px) {
     &__content {
-      width: vw(460, $mobile-width);
+      width: vw(460, $mobile);
     }
 
     &__slider {
-      margin-bottom: vw(15, $mobile-width);
+      margin-bottom: vw(15, $mobile);
     }
 
     &__header {
-      margin-bottom: vw(15, $mobile-width);
+      margin-bottom: vw(15, $mobile);
     }
 
     &__header-btns {
-      padding-left: vw(20, $mobile-width);
+      padding-left: vw(20, $mobile);
     }
 
     &__header-btn {
       &:not(:first-child) {
-        margin-left: vw(20, $mobile-width);
+        margin-left: vw(20, $mobile);
       }
     }
 
     &__meta {
-      margin-top: vw(-10, $mobile-width);
-      margin-left: vw(-35, $mobile-width);
+      margin-top: vw(-10, $mobile);
+      margin-left: vw(-35, $mobile);
     }
 
     &__meta-item {
-      margin-top: vw(10, $mobile-width);
-      margin-left: vw(35, $mobile-width);
+      margin-top: vw(10, $mobile);
+      margin-left: vw(35, $mobile);
     }
 
     &__title {
-      margin-bottom: vw(15, $mobile-width);
+      margin-bottom: vw(15, $mobile);
     }
 
     &__location {
-      margin-bottom: vw(15, $mobile-width);
-      padding: vw(2, $mobile-width) 0;
+      margin-bottom: vw(15, $mobile);
+      padding: vw(2, $mobile) 0;
     }
 
     &__details {
-      margin-top: vw(-10, $mobile-width);
-      margin-left: vw(-40, $mobile-width);
-      margin-bottom: vw(15, $mobile-width);
+      margin-top: vw(-10, $mobile);
+      margin-left: vw(-40, $mobile);
+      margin-bottom: vw(15, $mobile);
     }
 
     &__detail {
-      margin-top: vw(10, $mobile-width);
-      margin-left: vw(40, $mobile-width);
+      margin-top: vw(10, $mobile);
+      margin-left: vw(40, $mobile);
     }
 
     &__btns {
-      margin-top: vw(-20, $mobile-width);
-      margin-left: vw(-20, $mobile-width);
+      margin-top: vw(-20, $mobile);
+      margin-left: vw(-20, $mobile);
     }
 
     &__btn {
-      margin-top: vw(20, $mobile-width);
-      margin-left: vw(20, $mobile-width);
+      margin-top: vw(20, $mobile);
+      margin-left: vw(20, $mobile);
     }
 
     &__article {
-      margin-top: vw(32, $mobile-width);
+      margin-top: vw(32, $mobile);
     }
   }
 }

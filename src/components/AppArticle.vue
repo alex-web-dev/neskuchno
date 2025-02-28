@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 
 </script>
 
@@ -11,7 +11,6 @@
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .article {
   font-size: vw(16);
@@ -46,31 +45,31 @@
   }
 
   @media (max-width: 991px) {
-    font-size: vw(16, $mobile-width);
+    font-size: vw(16, $mobile);
 
 
     ::v-deep(.article__content) {
 
       ul,
       ol {
-        padding-bottom: vw(8, $mobile-width);
+        padding-bottom: vw(8, $mobile);
 
         li {
           &:not(:first-child) {
-            margin-top: vw(8, $mobile-width);
+            margin-top: vw(8, $mobile);
           }
         }
       }
 
       ul {
-        padding-left: vw(28, $mobile-width);
+        padding-left: vw(28, $mobile);
       }
 
       p,
       ul,
       ol {
         &:not(:first-child) {
-          margin-top: vw(10, $mobile-width);
+          margin-top: vw(10, $mobile);
         }
       }
     }

@@ -1,8 +1,6 @@
-<script setup>
-import AppLink from './AppLink.vue';
-import AppText from './AppText.vue';
-
-
+<script lang="ts" setup>
+import AppLink from '@/components/AppLink.vue';
+import AppText from '@/components/AppText.vue';
 </script>
 
 <template>
@@ -35,7 +33,6 @@ import AppText from './AppText.vue';
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .footer {
   padding: vw(10) 0;
@@ -51,27 +48,31 @@ import AppText from './AppText.vue';
     }
   }
 
+  &__menu-link {
+    display: block;
+  }
+
   &__privacy {
-    margin-top: vw(63);
     color: #808080;
+    margin-top: vw(63);
   }
 
   @media (max-width: 991px) {
-    padding: vw(10, $mobile-width) 0;
-    border-top: vw(1, $mobile-width) solid #e5e5e5;
+    padding: vw(10, $mobile) 0;
+    border-top: vw(1, $mobile) solid #e5e5e5;
 
     &__menu {
-      padding-top: vw(7, $mobile-width);
+      padding-top: vw(7, $mobile);
     }
 
     &__menu-item {
       &:not(:first-child) {
-        margin-top: vw(5, $mobile-width);
+        margin-top: vw(5, $mobile);
       }
     }
 
     &__privacy {
-      margin-top: vw(63, $mobile-width);
+      margin-top: vw(63, $mobile);
     }
   }
 }

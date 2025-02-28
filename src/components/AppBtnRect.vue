@@ -1,6 +1,6 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
-import AppIcon from "./AppIcon.vue";
+import AppIcon from "@/components/AppIcon.vue";
 
 const props = defineProps({
   as: {
@@ -24,7 +24,6 @@ const tag = computed(() => props.as);
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .btn-rect {
   width: vw(40);
@@ -37,10 +36,10 @@ const tag = computed(() => props.as);
   border: vw(1) solid #e5e5e5;
 
   @media (max-width: 991px) {
-    width: vw(40, $mobile-width);
-    height: vw(40, $mobile-width);
-    border-radius: vw(6, $mobile-width);
-    border-width: vw(1, $mobile-width);
+    width: vw(40, $mobile);
+    height: vw(40, $mobile);
+    border-radius: vw(6, $mobile);
+    border-width: vw(1, $mobile);
   }
 }
 </style>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import EventView from "@/views/EventView.vue";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "@/views/HomeView.vue";
 
 const DEFAULT_TITLE = "Neskuchno";
 
@@ -31,7 +31,7 @@ const router = createRouter({
 router.afterEach((to) => {
   let title = to.meta.title || DEFAULT_TITLE;
 
-  document.title = title;
+  document.title = title as string;
 });
 
 export default router;

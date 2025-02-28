@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 defineProps({
   src: {
     type: String,
@@ -17,7 +17,6 @@ import { useImage } from '@/hooks/useImage';
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .icon {
   width: vw(20);
@@ -33,8 +32,8 @@ import { useImage } from '@/hooks/useImage';
   }
 
   @media (max-width: 991px) {
-    width: vw(20, $mobile-width);
-    height: vw(20, $mobile-width);
+    width: vw(20, $mobile);
+    height: vw(20, $mobile);
   }
 }
 </style>

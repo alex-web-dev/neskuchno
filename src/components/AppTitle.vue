@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
 
 const props = defineProps({
@@ -22,8 +22,6 @@ const tag = computed(() => props.as);
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
-
 .title {
   font-size: vw(24);
   font-weight: 700;
@@ -41,11 +39,20 @@ const tag = computed(() => props.as);
     font-family: 'Overpass', sans-serif;
   }
 
+  &--clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+
   @media (max-width: 991px) {
-    font-size: vw(24, $mobile-width);
+    font-size: vw(24, $mobile);
 
     &--2 {
-      font-size: vw(20, $mobile-width);
+      font-size: vw(20, $mobile);
     }
   }
 }

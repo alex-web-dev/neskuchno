@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 defineProps({
   rotate: {
     type: Number,
@@ -15,7 +15,6 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
 
 .btn-next {
   width: vw(30);
@@ -41,12 +40,12 @@ defineProps({
   }
 
   @media (max-width: 991px) {
-    width: vw(30, $mobile-width);
-    height: vw(30, $mobile-width);
+    width: vw(30, $mobile);
+    height: vw(30, $mobile);
 
     &__icon {
-      width: vw(9, $mobile-width);
-      height: vw(16, $mobile-width);
+      width: vw(9, $mobile);
+      height: vw(16, $mobile);
     }
   }
 }

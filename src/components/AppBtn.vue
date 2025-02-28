@@ -1,7 +1,13 @@
-<script setup>
+<script lang="ts" setup>
 import { useSlots, computed } from 'vue'
 
-const slots = useSlots()
+type Slots = {
+  default?: any;
+  leftIcon?: any;
+  rightIcon?: any;
+};
+
+const slots: Slots = useSlots();
 const props = defineProps({
   as: {
     type: String,
@@ -25,8 +31,6 @@ const tag = computed(() => props.as);
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/scss/functions.scss' as *;
-
 .btn {
   padding: vw(8) vw(26);
   background-color: var(--color-primary-400);
@@ -41,6 +45,11 @@ const tag = computed(() => props.as);
   line-height: 1.5;
   color: #fff;
   background: linear-gradient(108.67deg, #AF29BE 24.4%, #7329BE 77.2%);
+
+  &--py-2xl {
+    padding-top: vw(13);
+    padding-bottom: vw(13);
+  }
 
   &--py-lg {
     padding-top: vw(10);
@@ -78,6 +87,10 @@ const tag = computed(() => props.as);
     font-weight: 500;
   }
 
+  &--full {
+    width: 100%;
+  }
+
   &__icon {
     flex: 0 0 auto;
 
@@ -91,49 +104,54 @@ const tag = computed(() => props.as);
   }
 
   @media (max-width: 991px) {
-    padding: vw(8, $mobile-width) vw(26, $mobile-width);
-    border-radius: vw(10, $mobile-width);
-    font-size: vw(16, $mobile-width);
+    padding: vw(8, $mobile) vw(26, $mobile);
+    border-radius: vw(10, $mobile);
+    font-size: vw(16, $mobile);
+
+    &--py-2xl {
+      padding-top: vw(13, $mobile);
+      padding-bottom: vw(13, $mobile);
+    }
 
     &--py-lg {
-      padding-top: vw(10, $mobile-width);
-      padding-bottom: vw(10, $mobile-width);
+      padding-top: vw(10, $mobile);
+      padding-bottom: vw(10, $mobile);
     }
 
     &--px-xs {
-      padding-left: vw(13, $mobile-width);
-      padding-right: vw(13, $mobile-width);
+      padding-left: vw(13, $mobile);
+      padding-right: vw(13, $mobile);
     }
 
     &--px-2xs {
-      padding-left: vw(10, $mobile-width);
-      padding-right: vw(10, $mobile-width);
+      padding-left: vw(10, $mobile);
+      padding-right: vw(10, $mobile);
     }
 
     &--sm {
-      padding: vw(10, $mobile-width);
-      font-size: vw(14, $mobile-width);
+      padding: vw(10, $mobile);
+      font-size: vw(14, $mobile);
     }
 
     &--rounded-sm {
-      border-radius: vw(6, $mobile-width);
+      border-radius: vw(6, $mobile);
     }
 
     &--rounded-3xl {
-      border-radius: vw(90, $mobile-width);
+      border-radius: vw(90, $mobile);
     }
 
     &--text-sm {
-      font-size: vw(14, $mobile-width);
+      font-size: vw(14, $mobile);
     }
 
     &__icon {
       &:first-child:not(:last-child) {
-        margin-right: vw(8, $mobile-width);
+        margin-right: vw(8, $mobile);
       }
 
       &:last-child:not(:first-child) {
-        margin-left: vw(8, $mobile-width);
+        margin-left: vw(8, $mobile);
       }
     }
   }

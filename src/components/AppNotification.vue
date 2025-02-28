@@ -25,6 +25,7 @@ const isClosed = ref<boolean>(false)
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 10;
     width: 100%;
     max-width: 100%;
     background: var(--color-white);

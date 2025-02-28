@@ -7,6 +7,7 @@ import AppBadge from '@/components/AppBadge/AppBadge.vue';
 import AppText from '@/components/AppText.vue';
 import AppIcon from '@/components/AppIcon.vue';
 import AppTitle from '../AppTitle.vue';
+import { RouterLink } from 'vue-router';
 
 defineProps<IEventCardProps>();
 const isInFavorites = ref<boolean>(false)
@@ -41,12 +42,16 @@ const handleClickFavorites = () => {
                 <span class="event-card__location-text">{{ event.address }}</span>
             </AppText>
             <div class="event-card__description">
-                <AppTitle class="title--2 title--clamp event-card__title">{{ event.title }}</AppTitle>
+                <AppTitle class="title--2 title--clamp event-card__title">
+                    <RouterLink to="/event">{{ event.title }}</RouterLink>
+                </AppTitle>
                 <AppText class="text--sm text--clamp text--clamp-2 event-card__text">{{ event.description }}</AppText>
             </div>
         </div>
         <div class="event-card__poster">
-            <img class="event-card__poster-img" :src="useImage(event.mainImage.src)" alt="event.title">
+            <RouterLink class="event-card__poster-link" to="/event">
+                <img class="event-card__poster-img" :src="useImage(event.mainImage.src)" alt="event.title">
+            </RouterLink>
             <favorites-icon class="event-card__poster-favorites" :inFavorites="isInFavorites"
                 :color="favoritesIconColor" @click="handleClickFavorites" />
             <AppBadge v-if="event.isTop" color="top" class="event-card__poster-badge">Топ дня</AppBadge>
@@ -121,12 +126,18 @@ const handleClickFavorites = () => {
         flex: 0 0 auto;
         user-select: none;
 
-        &-img {
+        &-link {
             width: vw(158);
             height: 100%;
+            display: block;
+        }
+
+        &-img {
+            width: 100%;
+            height: 100%;
             border-radius: vw(15);
-            object-fit: cover;
             background-color: var(--primary-color-100);
+            object-fit: cover;
         }
 
         &-favorites {

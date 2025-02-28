@@ -183,8 +183,11 @@ const handleClickFavorites = () => {
         }
 
         &__poster {
-            &-img {
+            &-link {
                 width: vw(158, $mobile);
+            }
+
+            &-img {
                 border-radius: vw(15, $mobile);
             }
 

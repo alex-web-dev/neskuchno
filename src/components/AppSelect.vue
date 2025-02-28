@@ -19,7 +19,7 @@ onClickOutside($select, () => isOpen.value = false);
 <template>
   <div class="select" ref="$select">
     <AppInput class="dashboard__sidebar-input" placeholder="Выберите место" readonly
-      rightIcon="/img/icons/search-black.svg" @click="isOpen = true">
+      rightIcon="img/icons/search-black.svg" @click="isOpen = true">
     </AppInput>
     <TransitionFade>
       <div class="select__dropdown" v-show="isOpen">

@@ -17,26 +17,26 @@ import EventSlider from '@/components/EventSlider.vue';
           <div class="event__meta">
             <AppText class="text--iflex text--sm text--bold text--gray-800 event__meta-item">
               <template v-slot:leftIcon>
-                <AppIcon src="/img/icons/calendar-gray-800.svg" />
+                <AppIcon src="img/icons/calendar-gray-800.svg" />
               </template>
               <span>03.01.2025</span>
             </AppText>
             <AppText class="text--iflex text--sm text--medium text--gray-800 event__meta-item">
               <template v-slot:leftIcon>
-                <AppIcon src="/img/icons/clock-gray-800.svg" />
+                <AppIcon src="img/icons/clock-gray-800.svg" />
               </template>
               <span>19:00-22:00</span>
             </AppText>
           </div>
           <div class="event__header-btns">
-            <AppBtnRect class="event__header-btn" icon="/img/icons/heart-gray-950.svg"></AppBtnRect>
-            <AppBtnRect class="event__header-btn" icon="/img/icons/upload-gray-950.svg"></AppBtnRect>
+            <AppBtnRect class="event__header-btn" icon="img/icons/heart-gray-950.svg"></AppBtnRect>
+            <AppBtnRect class="event__header-btn" icon="img/icons/upload-gray-950.svg"></AppBtnRect>
           </div>
         </div>
         <AppTitle as="h1" class="title--lh-175 title--overpass event__title">Быстрые свидания в Москве</AppTitle>
         <AppText class="text--iflex text--sm text--medium text--gray-800 event__location">
           <template v-slot:leftIcon>
-            <AppIcon src="/img/icons/location-gray-800.svg" />
+            <AppIcon src="img/icons/location-gray-800.svg" />
           </template>
           <span>м. Проспект Мира Улица Королева-Корсакова., дом 32 корпус 5 ресторан “Печаль Моряка”</span>
         </AppText>
@@ -48,19 +48,19 @@ import EventSlider from '@/components/EventSlider.vue';
         <div class="event__btns">
           <AppBtn class="btn--py-sm btn--px-2xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
             <template v-slot:leftIcon>
-              <AppIcon src="/img/icons/chain-white.svg" />
+              <AppIcon src="img/icons/chain-white.svg" />
             </template>
             <span>Сайт организатора</span>
           </AppBtn>
           <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
             <template v-slot:leftIcon>
-              <AppIcon src="/img/icons/telegram-white.svg" />
+              <AppIcon src="img/icons/telegram-white.svg" />
             </template>
             <span>Написать</span>
           </AppBtn>
           <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
             <template v-slot:leftIcon>
-              <AppIcon src="/img/icons/telegram-white.svg" />
+              <AppIcon src="img/icons/telegram-white.svg" />
             </template>
             <span>Написать</span>
           </AppBtn>

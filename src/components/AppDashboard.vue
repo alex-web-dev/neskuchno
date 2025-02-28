@@ -21,9 +21,9 @@ const rubricsModelValue = computed(() => `Выбрано ${selectedFiltersCount.
       <div class="dashboard__content">
         <aside class="dashboard__sidebar">
           <AppInput class="dashboard__sidebar-filters-input" placeholder="Рубрики..." :modelValue="rubricsModelValue"
-            readonly rightIcon="/img/icons/filters-black.svg" @click="showFilters = true" />
+            readonly rightIcon="img/icons/filters-black.svg" @click="showFilters = true" />
           <div class="dashboard__sidebar-inputs">
-            <AppInput class="dashboard__sidebar-input" placeholder="Дата" rightIcon="/img/icons/calendar-black.svg" />
+            <AppInput class="dashboard__sidebar-input" placeholder="Дата" rightIcon="img/icons/calendar-black.svg" />
             <AppSelect class="dashboard__sidebar-input" />
           </div>
           <AppFilters class="dashboard__sidebar-filters" :class="{ 'dashboard__sidebar-filters--show': showFilters }"

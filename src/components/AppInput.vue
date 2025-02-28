@@ -27,7 +27,6 @@ const inputType = props.type || 'text';
 </template>
 
 <style lang="scss" scoped>
-
 .input {
   &__main {
     position: relative;

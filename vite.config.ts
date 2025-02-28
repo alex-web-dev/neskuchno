@@ -4,7 +4,9 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/neskuchno/",
+  base: process.env.NODE_ENV === 'production' && process.env.VERCEL
+  ? './'
+  : '/neskuchno/',
   plugins: [vue()],
   resolve: {
     alias: {

@@ -23,20 +23,20 @@ const handleClickFavorites = () => {
             <div class="event-card__meta">
                 <AppText class="text--iflex text--sm text--bold text--gray-800 event-card__meta-item">
                     <template v-slot:leftIcon>
-                        <AppIcon src="/img/icons/calendar-gray-800.svg" />
+                        <AppIcon src="img/icons/calendar-gray-800.svg" />
                     </template>
                     <span>{{ event.date }}</span>
                 </AppText>
                 <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__meta-item">
                     <template v-slot:leftIcon>
-                        <AppIcon src="/img/icons/clock-gray-800.svg" />
+                        <AppIcon src="img/icons/clock-gray-800.svg" />
                     </template>
                     <span>{{ event.time }}</span>
                 </AppText>
             </div>
             <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__location">
                 <template v-slot:leftIcon>
-                    <AppIcon src="/img/icons/location-gray-800.svg" />
+                    <AppIcon src="img/icons/location-gray-800.svg" />
                 </template>
                 <span class="event-card__location-text">{{ event.address }}</span>
             </AppText>

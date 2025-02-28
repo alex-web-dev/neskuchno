@@ -43,7 +43,7 @@ watchEffect(() => {
   <div class="filters">
 
     <div class="filters__content">
-      <AppInput class="filters__mobile-field" placeholder="Рубрики..." readonly rightIcon="/img/icons/filters-black.svg"
+      <AppInput class="filters__mobile-field" placeholder="Рубрики..." readonly rightIcon="img/icons/filters-black.svg"
         @click="emit('fieldClick')" />
 
       <div class="filters__list">

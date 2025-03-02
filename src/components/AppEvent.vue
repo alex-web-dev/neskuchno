@@ -60,7 +60,7 @@ import EventSlider from '@/components/EventSlider.vue';
           </AppBtn>
           <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
             <template v-slot:leftIcon>
-              <AppIcon src="img/icons/telegram-white.svg" />
+              <AppIcon src="img/icons/whatsapp-white.svg" />
             </template>
             <span>Написать</span>
           </AppBtn>

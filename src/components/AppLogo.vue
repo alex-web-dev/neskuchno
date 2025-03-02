@@ -19,7 +19,7 @@
   }
 
   @media (max-width: 991px) {
-    width: vw(220, $mobile)
+    width: vw(220, $mobile);
   }
 }
 </style>

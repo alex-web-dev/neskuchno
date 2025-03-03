@@ -28,6 +28,10 @@ const slots = useSlots()
     }
   }
 
+  &--xs {
+    font-size: vw(12);
+  }
+
   &--sm {
     font-size: vw(14);
   }

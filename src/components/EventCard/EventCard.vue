@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { IEventCardProps } from './types';
 import favoritesIcon from '@/components/icons/favorites-icon.vue';
-import { useImage } from '@/hooks/useImage';
 import { computed, ref } from 'vue';
 import AppBadge from '@/components/AppBadge/AppBadge.vue';
 import AppText from '@/components/AppText.vue';
@@ -9,52 +8,65 @@ import AppIcon from '@/components/AppIcon.vue';
 import AppTitle from '../AppTitle.vue';
 import { RouterLink } from 'vue-router';
 
-defineProps<IEventCardProps>();
+const props = defineProps<IEventCardProps>();
 const isInFavorites = ref<boolean>(false)
 
 const favoritesIconColor = computed(() => isInFavorites.value ? 'var(--color-primary-700)' : 'white');
 const handleClickFavorites = () => {
     isInFavorites.value = !isInFavorites.value;
 }
+
+const date = computed(() => {
+    const datetime = props.event.from;
+    return datetime ? datetime.split('T')[0] : null;
+});
+
+const time = computed(() => {
+    const datetime = props.event.from;
+    return datetime ? datetime.split('T')[1] : null;
+});
+
+const imageLoaded = ref(true);
+const handleImageError = () => imageLoaded.value = false;
 </script>
 
 <template>
     <div class="event-card">
         <div class="event-card__content">
             <div class="event-card__meta">
-                <AppText class="text--iflex text--sm text--bold text--gray-800 event-card__meta-item">
+                <AppText class="text--iflex text--sm text--bold text--gray-800 event-card__meta-item" v-if="date">
                     <template v-slot:leftIcon>
                         <AppIcon src="img/icons/calendar-gray-800.svg" />
                     </template>
-                    <span>{{ event.date }}</span>
+                    <span>{{ date }}</span>
                 </AppText>
-                <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__meta-item">
+                <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__meta-item" v-if="time">
                     <template v-slot:leftIcon>
                         <AppIcon src="img/icons/clock-gray-800.svg" />
                     </template>
-                    <span>{{ event.time }}</span>
+                    <span>{{ time }}</span>
                 </AppText>
             </div>
-            <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__location">
+            <AppText class="text--iflex text--sm text--medium text--gray-800 event-card__location" v-if="event.adress">
                 <template v-slot:leftIcon>
                     <AppIcon src="img/icons/location-gray-800.svg" />
                 </template>
-                <span class="event-card__location-text">{{ event.address }}</span>
+                <span class="event-card__location-text">{{ event.adress }}</span>
             </AppText>
-            <div class="event-card__description">
+            <div class="event-card__description" v-if="event.description">
                 <AppTitle class="title--2 title--clamp event-card__title">
-                    <RouterLink to="/event">{{ event.title }}</RouterLink>
+                    <RouterLink :to="`/event/${event.id}`">{{ event.name }}</RouterLink>
                 </AppTitle>
                 <AppText class="text--sm text--clamp text--clamp-2 event-card__text">{{ event.description }}</AppText>
             </div>
         </div>
         <div class="event-card__poster">
-            <RouterLink class="event-card__poster-link" to="/event">
-                <img class="event-card__poster-img" :src="useImage(event.mainImage.src)" alt="event.title">
+            <RouterLink class="event-card__poster-link" :to="`/event/${event.id}`" v-if="imageLoaded">
+                <img class="event-card__poster-img" :src="event.image" :alt="event.name" @error="handleImageError">
             </RouterLink>
             <favorites-icon class="event-card__poster-favorites" :inFavorites="isInFavorites"
                 :color="favoritesIconColor" @click="handleClickFavorites" />
-            <AppBadge v-if="event.isTop" color="top" class="event-card__poster-badge">Топ дня</AppBadge>
+            <AppBadge v-if="event.top" color="top" class="event-card__poster-badge">Топ дня</AppBadge>
         </div>
     </div>
 </template>
@@ -124,10 +136,11 @@ const handleClickFavorites = () => {
     &__poster {
         position: relative;
         flex: 0 0 auto;
+        width: vw(158);
         user-select: none;
 
         &-link {
-            width: vw(158);
+            width: 100%;
             height: 100%;
             display: block;
         }

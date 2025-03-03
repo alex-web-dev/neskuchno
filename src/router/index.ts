@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import EventView from "@/views/EventView.vue";
 import HomeView from "@/views/HomeView.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const DEFAULT_TITLE = "Neskuchno";
 
@@ -14,13 +15,15 @@ const routes = [
     },
   },
   {
-    path: "/event",
+    path: "/event/:id",
     name: "event",
     component: EventView,
     meta: {
       title: `${DEFAULT_TITLE} - Событие`,
     },
+    props: true,
   },
+  { path: "/:pathMatch(.*)*", component: NotFound },
 ];
 
 const router = createRouter({

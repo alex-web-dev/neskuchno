@@ -1,16 +1,17 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import AppFilters from '@/components/AppFilters.vue';
 import AppInput from '@/components/AppInput.vue';
-import EventCard from '@/components/EventCard/EventCard.vue';
-import { useEventsStore } from '@/stores/events/events';
-import { storeToRefs } from 'pinia';
+import EventsList from '@/components/EventsList.vue';
 import AppBtn from './AppBtn.vue';
 import AppSelect from '@/components/AppSelect.vue';
-import { computed, ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useEventsStore } from '@/stores/events/events';
+import { storeToRefs } from 'pinia';
 
 const eventsStore = useEventsStore();
-const { events, eventsFilters } = storeToRefs(eventsStore);
-const showFilters = ref<boolean>(false);
+const { eventsFilters } = storeToRefs(eventsStore);
+const showFilters = ref(false);
+
 const selectedFiltersCount = ref(0);
 const rubricsModelValue = computed(() => `Выбрано ${selectedFiltersCount.value} рубрик`);
 </script>
@@ -27,20 +28,18 @@ const rubricsModelValue = computed(() => `Выбрано ${selectedFiltersCount.
             <AppSelect class="dashboard__sidebar-input" />
           </div>
           <AppFilters class="dashboard__sidebar-filters" :class="{ 'dashboard__sidebar-filters--show': showFilters }"
-            :filters="eventsFilters" @fieldClick="showFilters = false" @update:selectedCount="selectedFiltersCount = $event" />
+            :filters="eventsFilters" @fieldClick="showFilters = false"
+            @update:selectedCount="selectedFiltersCount = $event" />
           <AppBtn class="btn--full btn--rounded-3xl btn--py-2xl dashboard__sidebar-btn">Искать</AppBtn>
         </aside>
         <div class="dashboard__main">
-          <div class="dashboard__list">
-            <EventCard class="dashboard__item"
-              :class="{ 'event-card--primary-150': eventIndex == 2, 'event-card--primary-200': eventIndex > 2 }"
-              v-for="event, eventIndex of events" :key="eventIndex" :event="event" />
-          </div>
+          <EventsList />
         </div>
       </div>
     </div>
   </div>
 </template>
+
 
 <style lang="scss" scoped>
 .dashboard {

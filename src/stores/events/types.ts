@@ -1,21 +1,32 @@
-export type TImage = {
-  id: string;
-  src: string;
-};
-
 export interface IEvent {
-  id: string;
-  date: string;
-  time: string;
-  address: string;
-  title: string;
+  name: string;
+  contacts: string[];
+  datetime: [
+    {
+      from: string;
+      to: string;
+    }
+  ];
+  prices: string[];
+  addresses: string[];
   description: string;
-  priceFrom: number;
-  priceTo: number;
-  mainImage: TImage;
-  allImages: TImage[];
-  inFavorites: boolean;
-  isTop: boolean;
+  images: string[];
+}
+
+export interface IEventCard {
+  id: number;
+  type: number;
+  top: boolean;
+  adress: string;
+  name: string;
+  from: string;
+  image: string;
+  description: string;
+}
+
+export interface IEvents {
+  next: string,
+  results: IEventCard[]
 }
 
 export interface IEventFilter {

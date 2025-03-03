@@ -1,32 +1,24 @@
+<script lang="ts" setup>
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import AppBtnNext from '@/components/AppBtnNext.vue';
+import {useImage} from '@/hooks/useImage';
+
+defineProps<{
+  images: string[]
+}>();
+const emit = defineEmits(['imageError']);
+</script>
+
 <template>
   <div class="event-slider">
     <swiper class="event-slider__main" :slides-per-view="1" :space-between="0" :speed="500"
       :modules="[Navigation, Pagination]"
       :navigation="{ prevEl: '.event-slider__btn-prev', nextEl: '.event-slider__btn-next' }"
       :pagination="{ clickable: true }">
-      <swiper-slide class="event-slider__slide">
+      <swiper-slide class="event-slider__slide" v-for="(image, index) of images" :key="index">
         <div class="event-slider__item">
-          <img class="event-slider__item-img" src="/img/event-img.jpg" alt="">
-        </div>
-      </swiper-slide>
-      <swiper-slide class="event-slider__slide">
-        <div class="event-slider__item">
-          <img class="event-slider__item-img" src="/img/event-img.jpg" alt="">
-        </div>
-      </swiper-slide>
-      <swiper-slide class="event-slider__slide">
-        <div class="event-slider__item">
-          <img class="event-slider__item-img" src="/img/event-img.jpg" alt="">
-        </div>
-      </swiper-slide>
-      <swiper-slide class="event-slider__slide">
-        <div class="event-slider__item">
-          <img class="event-slider__item-img" src="/img/event-img.jpg" alt="">
-        </div>
-      </swiper-slide>
-      <swiper-slide class="event-slider__slide">
-        <div class="event-slider__item">
-          <img class="event-slider__item-img" src="/img/event-img.jpg" alt="">
+          <img class="event-slider__item-img" :src="useImage(image)" alt="" @error="emit('imageError')">
         </div>
       </swiper-slide>
     </swiper>
@@ -34,13 +26,8 @@
     <AppBtnNext class="event-slider__btn-next" />
   </div>
 </template>
-<script lang="ts" setup>
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import AppBtnNext from '@/components/AppBtnNext.vue';
-</script>
-<style lang="scss" scoped>
 
+<style lang="scss" scoped>
 .event-slider {
   position: relative;
   width: 100%;

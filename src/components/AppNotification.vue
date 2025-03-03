@@ -2,19 +2,30 @@
     <div v-if="!isClosed" class="notification">
         <div class="notification__content">
             <AppText class="text--sm">Мы используем куки для улучшения вашего опыта на сайте.</AppText>
-            <AppBtn @click="isClosed = true">Принять</AppBtn>
+            <AppBtn @click="acceptCookies">Принять</AppBtn>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
 import AppBtn from './AppBtn.vue';
 import AppText from './AppText.vue';
 
-const isClosed = ref<boolean>(false)
+const isClosed = ref<boolean>(false);
 
+const acceptCookies = () => {
+    localStorage.setItem('cookiesAccepted', 'true');
+    isClosed.value = true;
+};
+
+onMounted(() => {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+        isClosed.value = true;
+    }
+});
 </script>
+
 
 <style lang="scss" scoped>
 .notification {

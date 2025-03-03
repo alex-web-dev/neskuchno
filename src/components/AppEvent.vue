@@ -6,59 +6,131 @@ import AppTitle from '@/components/AppTitle.vue';
 import AppBtn from '@/components/AppBtn.vue';
 import AppArticle from '@/components/AppArticle.vue';
 import EventSlider from '@/components/EventSlider.vue';
+import favoritesIcon from '@/components/icons/favorites-icon.vue';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { getEvent } from '@/api/eventsApi';
+import { computed, reactive } from '@vue/reactivity';
+import { useMessagesStore } from '@/stores/messages';
+import type { IEvent } from '@/stores/events/types';
+import type { AxiosError } from 'axios';
+
+const route = useRoute();
+const eventId = route.params.id;
+const event = ref<IEvent | null>(null);
+const isLoading = ref(true);
+const messagesStore = useMessagesStore();
+const isInFavorites = ref<boolean>(false)
+const favoritesIconColor = computed(() => isInFavorites.value ? 'var(--color-primary-700)' : 'var(--color-black)');
+const handleClickFavorites = () => {
+    isInFavorites.value = !isInFavorites.value;
+}
+
+onMounted(async () => {
+  try {
+    isLoading.value = true;
+    const data = await getEvent(Number(eventId));
+    event.value = data;
+  } catch (err) {
+    const error = err as AxiosError;
+    if (error.response?.status === 404) {
+      messagesStore.addMessage('Событие не найдено', 'error');
+    } else {
+      messagesStore.addMessage('Произошла ошибка при загрузке события. Попробуйте позже.', 'error');
+    }
+  } finally {
+    isLoading.value = false;
+  }
+});
+
+const date = computed(() => {
+  if (!event.value) {
+    return null;
+  }
+  const datetime = event.value.datetime[0].from;
+  return datetime ? datetime.split('T')[0] : null;
+});
+
+const time = computed(() => {
+  if (!event.value) {
+    return null;
+  }
+  const datetime = event.value.datetime[0].from;
+  return datetime ? datetime.split('T')[1] : null;
+});
+
+const placeholderImages = reactive([
+  'img/event-img.jpg',
+  'img/event-img.jpg',
+  'img/event-img.jpg',
+  'img/event-img.jpg',
+  'img/event-img.jpg',
+]);
+
+const firstImageLoaded = ref(true);
+const sliderImages = computed(() =>
+  event.value && firstImageLoaded.value ? event.value.images : placeholderImages
+);
 </script>
 
 <template>
   <div class="event">
     <div class="container">
-      <div class="event__content">
-        <EventSlider class="event__slider" />
+      <div v-if="!isLoading && event" class="event__content">
+        <EventSlider class="event__slider" :images="sliderImages" @imageError="firstImageLoaded = false" />
         <div class="event__header">
           <div class="event__meta">
-            <AppText class="text--iflex text--sm text--bold text--gray-800 event__meta-item">
+            <AppText v-if="date" class="text--iflex text--sm text--bold text--gray-800 event__meta-item">
               <template v-slot:leftIcon>
                 <AppIcon src="img/icons/calendar-gray-800.svg" />
               </template>
-              <span>03.01.2025</span>
+              <span>{{ date }}</span>
             </AppText>
-            <AppText class="text--iflex text--sm text--medium text--gray-800 event__meta-item">
+            <AppText v-if="time" class="text--iflex text--sm text--medium text--gray-800 event__meta-item">
               <template v-slot:leftIcon>
                 <AppIcon src="img/icons/clock-gray-800.svg" />
               </template>
-              <span>19:00-22:00</span>
+              <span>{{ time }}</span>
             </AppText>
           </div>
           <div class="event__header-btns">
-            <AppBtnRect class="event__header-btn" icon="img/icons/heart-gray-950.svg"></AppBtnRect>
+            <AppBtnRect class="event__header-btn" @click="handleClickFavorites">
+              <favorites-icon class="event-card__poster-favorites" :inFavorites="isInFavorites"
+              :color="favoritesIconColor" />
+            </AppBtnRect>
             <AppBtnRect class="event__header-btn" icon="img/icons/upload-gray-950.svg"></AppBtnRect>
           </div>
         </div>
-        <AppTitle as="h1" class="title--lh-175 title--overpass event__title">Быстрые свидания в Москве</AppTitle>
-        <AppText class="text--iflex text--sm text--medium text--gray-800 event__location">
+        <AppTitle as="h1" class="title--lh-175 title--overpass event__title">{{ event.name }}</AppTitle>
+        <AppText v-for="address of event.addresses"
+          class="text--iflex text--sm text--medium text--gray-800 event__location">
           <template v-slot:leftIcon>
             <AppIcon src="img/icons/location-gray-800.svg" />
           </template>
-          <span>м. Проспект Мира Улица Королева-Корсакова., дом 32 корпус 5 ресторан “Печаль Моряка”</span>
+          <span>{{ address }}</span>
         </AppText>
         <div class="event__details">
-          <AppText class="text--sm text--medium event__detail">от 1 499 ₽</AppText>
-          <AppText class="text--sm text--medium event__detail">до 2 499 ₽</AppText>
-          <AppText class="text--sm text--medium event__detail">Бесплатное</AppText>
+          <AppText class="text--sm text--medium event__detail" v-for="(price, index) of event.prices" :key="index">{{
+            price }}
+          </AppText>
         </div>
         <div class="event__btns">
-          <AppBtn class="btn--py-sm btn--px-2xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
+          <AppBtn class="btn--py-sm btn--px-2xs btn--rounded-sm btn--text-sm btn--text-medium event__btn"
+            v-if="event.contacts[0]" as="a" :href="event.contacts[0]" target="_blank">
             <template v-slot:leftIcon>
               <AppIcon src="img/icons/chain-white.svg" />
             </template>
             <span>Сайт организатора</span>
           </AppBtn>
-          <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
+          <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn"
+            v-if="event.contacts[1]" as="a" :href="event.contacts[1]" target="_blank">
             <template v-slot:leftIcon>
               <AppIcon src="img/icons/telegram-white.svg" />
             </template>
             <span>Написать</span>
           </AppBtn>
-          <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn">
+          <AppBtn class="btn--py-sm btn--px-xs btn--rounded-sm btn--text-sm btn--text-medium event__btn"
+            v-if="event.contacts[2]" as="a" :href="event.contacts[2]" target="_blank">
             <template v-slot:leftIcon>
               <AppIcon src="img/icons/whatsapp-white.svg" />
             </template>
@@ -66,25 +138,7 @@ import EventSlider from '@/components/EventSlider.vue';
           </AppBtn>
         </div>
         <AppArticle class="event__article">
-          <p>
-            🔥Забудьте о бесконечных переписках и ограничениях: Speed Dating — это встречи, наполненные искренними
-            эмоциями
-            и
-            живым общением. За вечер вы познакомитесь с 10–15 интересными людьми, которые, как и вы, ищут чего-то
-            настоящего
-            и
-            уникального.
-          </p>
-          <p>Что вас ждёт?🤔</p>
-          <ul>
-            <li>Невероятная динамика — 5 минут на встречу, чтобы понять, есть ли «та самая искра».</li>
-            <li>Идеальные условия — атмосфера уюта и непринуждённости, где легко быть собой.</li>
-            <li>Настоящие знакомства — шанс на общение, дружбу, а может и нечто большее!</li>
-          </ul>
-          <p>
-            ️Присоединяйтесь к вечеринке новых знакомств и позвольте себе встретить кого-то, кто добавит яркости в вашу
-            жизнь!
-          </p>
+          {{ event.description }}
         </AppArticle>
       </div>
     </div>
@@ -92,7 +146,6 @@ import EventSlider from '@/components/EventSlider.vue';
 </template>
 
 <style lang="scss" scoped>
-
 .event {
   &__content {
     margin: 0 auto;

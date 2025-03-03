@@ -13,6 +13,8 @@
 .main {
   padding-bottom: vw(62);
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: 991px) {
     padding-bottom: vw(62, $mobile);
